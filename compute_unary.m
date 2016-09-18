@@ -27,5 +27,8 @@ for idx = 1:size(gmm_params, 1)
     val = -log(mvnpdf(rgb_pt, mu, sigma))-log(pi_coeff)-1.5*log(2*pi);
     pix_D(idx) = val;
 end
+% min
+% D_min = min(pix_D);
 
-D_min = min(pix_D);
+% sum
+D_min = sum(pix_D);

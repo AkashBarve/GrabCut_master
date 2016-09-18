@@ -33,7 +33,10 @@ for idx = 1:size(gmm_U, 1)
     mu = gmm_U{idx, 2};
     sigma = gmm_U{idx, 3};
     
-    col = -log(mvnpdf(rgb_pts, mu, sigma))-log(pi_coeff)-1.5*log(2*pi);
+    %col = -log(mvnpdf(rgb_pts, mu, sigma))-log(pi_coeff)-1.5*log(2*pi);
+    % Assign GMM component label without considering pi
+    
+    col = -log(mvnpdf(rgb_pts, mu, sigma))-1.5*log(2*pi);
     pix_D(:, idx) = col;
 end
 
@@ -52,7 +55,11 @@ for idx = 1:size(gmm_B, 1)
     mu = gmm_B{idx, 2};
     sigma = gmm_B{idx, 3};
     
-    col = -log(mvnpdf(rgb_pts, mu, sigma))-log(pi_coeff)-1.5*log(2*pi);
+    %col = -log(mvnpdf(rgb_pts, mu, sigma))-log(pi_coeff)-1.5*log(2*pi);
+    
+    % Assign GMM component label without considering pi
+    
+    col = -log(mvnpdf(rgb_pts, mu, sigma))-1.5*log(2*pi);
     pix_D(:, idx) = col;
 end
 
